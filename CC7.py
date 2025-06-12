@@ -1,19 +1,24 @@
-import turtle
+import turtle  # Import the turtle graphics module
 
-def draw_circle(turtle, color, size, x, y):
-    turtle.penup()
-    turtle.color(color)
-    turtle.fillcolor(color)
-    turtle.goto(x,y)
-    turtle.begin_fill()
-    turtle.circle(size)
-    turtle.end_fill()
-    turtle.pendown()
+# Function to draw a square
+def square(t, length):
+    for _ in range(4):  # A square has 4 sides
+        t.forward(length)  # Move forward by the specified length
+        t.right(90)         # Turn right by 90 degrees
 
-tommy = turtle.Turtle()
-tommy.shape("turtle")
-tommy.speed(500)
+# Set up the screen and the turtle
+screen = turtle.Screen()   # Create a screen to display the turtle graphics
+screen.bgcolor("white")    # Optional: Set the background color
 
-draw_circle(tommy, "green", 50, 25, 0)
-draw_circle(tommy, "blue", 50, 0, 0)
-draw_circle(tommy, "yellow", 50, -25, 0)
+bob = turtle.Turtle()      # Create a turtle named bob
+bob.shape("turtle")        # Optional: Set the turtle shape to "turtle"
+bob.color("blue")          # Optional: Set the turtle color to blue
+
+# Call the square function with bob as the turtle and a side length of 100
+square(bob, 100)
+
+# Hide the turtle after drawing
+bob.hideturtle()
+
+# Keep the window open until the user clicks on it
+screen.exitonclick()

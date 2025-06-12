@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Code Snippets</title>
+</head>
+<body>
+    <h1>Python Code Snippet Links</h1>
+    <ul>
+        <li><a href="#snippet1">Running Time Function</a></li>
+        <li><a href="#snippet2">Right Justify Function</a></li>
+        <li><a href="#snippet3">Print Twice & Do Functions</a></li>
+        <li><a href="#snippet4">Draw Grid Function</a></li>
+        <li><a href="#snippet5">Check Fermat Function</a></li>
+        <li><a href="#snippet6">Is Triangle Function</a></li>
+        <li><a href="#snippet7">Turtle: Draw Single Square</a></li>
+        <li><a href="#snippet8">Turtle: Multiple Squares</a></li>
+        <li><a href="#snippet9">Turtle: Polygon</a></li>
+        <li><a href="#snippet10">Turtle: Circles</a></li>
+        <li><a href="#snippet11">Turtle: Arcs</a></li>
+    </ul>
+
+    <h2 id="snippet1">Running Time Function</h2>
+    <pre><code>def running_time(start_hour, start_minutes):
+    easy_pace = 8 * 60 + 15
+    tempo_pace = 7 * 60 + 12
+    total_time_seconds = easy_pace * 2 + (tempo_pace * 3)
+    total_minutes = total_time_seconds // 60
+    total_seconds = total_time_seconds % 60
+    end_minutes = total_minutes + start_minutes
+    end_hour = start_hour
+    if end_minutes >= 60:
+        end_hour += end_minutes // 60
+        end_minutes = end_minutes % 60
+    return end_hour, end_minutes
+
+end_hour, end_minutes = running_time(6, 52)
+print(f"You will arrive home for breakfast at {end_hour}:{end_minutes} AM.")</code></pre>
+
+    <h2 id="snippet2">Right Justify Function</h2>
+    <pre><code>def right_justify(s):
+    spaces_needed = 70 - len(s)
+    print(' ' * spaces_needed + s)
+
+right_justify('allen')</code></pre>
+
+    <h2 id="snippet3">Print Twice and Do Functions</h2>
+    <pre><code>def print_twice(message):
+    print(message)
+    print(message)
+
+def do_twice(f, v):
+    f(v)
+    f(v)
+
+do_twice(print_twice, 'spam')
+
+def do_four(f, v):
+    do_twice(f, v)
+    do_twice(f, v)
+
+do_four(print_twice, 'spam')</code></pre>
+
+    <h2 id="snippet4">Draw Grid Function</h2>
+    <pre><code>def draw_grid(rows, cols):
+    top_border = "+ " + " - " * 4 + " + " + " - " * 4 + " +"
+    print(top_border)
+    for row in range(rows):
+        for r in range(4):
+            line = "| " + " " * 10 + " | " + " " * 12 + " |"
+            print(line)
+        print(top_border)
+
+draw_grid(2, 2)</code></pre>
+
+    <h2 id="snippet5">Check Fermat Function</h2>
+    <pre><code>def check_fermat(a, b, c, n):
+    if n > 2:
+        if a**n + b**n == c**n:
+            print("Holy smokes, Fermat was wrong!")
+        else:
+            print("No, that doesn’t work.")
+    else:
+        print("No, that doesn’t work.")</code></pre>
+
+    <h2 id="snippet6">Is Triangle Function</h2>
+    <pre><code>def is_triangle(a, b, c):
+    if a + b > c and a + c > b and b + c > a:
+        print("Yes")
+    else:
+        print("No")
+
+def main():
+    a = int(input("Enter the first stick length: "))
+    b = int(input("Enter the second stick length: "))
+    c = int(input("Enter the third stick length: "))
+    is_triangle(a, b, c)
+
+main()</code></pre>
+
+    <h2 id="snippet7">Turtle: Draw Single Square</h2>
+    <pre><code>import turtle
+
+def square(t, length):
+    for _ in range(4):
+        t.forward(length)
+        t.right(90)
+
+screen = turtle.Screen()
+screen.bgcolor("white")
+
+bob = turtle.Turtle()
+bob.shape("turtle")
+bob.color("blue")
+
+square(bob, 100)
+
+bob.hideturtle()
+screen.exitonclick()</code></pre>
+
+    <h2 id="snippet8">Turtle: Multiple Squares</h2>
+    <pre><code>import turtle
+
+def square(t, length):
+    for _ in range(4):
+        t.forward(length)
+        t.right(90)
+
+screen = turtle.Screen()
+screen.bgcolor("white")
+
+bob = turtle.Turtle()
+bob.shape("turtle")
+bob.color("blue")
+
+square(bob, 100)
+square(bob, 50)
+square(bob, 150)
+
+bob.hideturtle()
+screen.exitonclick()</code></pre>
+
+    <h2 id="snippet9">Turtle: Polygon</h2>
+    <pre><code>import turtle
+
+def polygon(t, length, n):
+    angle = 360 / n
+    for _ in range(n):
+        t.forward(length)
+        t.left(angle)
+
+bob = turtle.Turtle()
+polygon(bob, 100, 6)
+turtle.done()</code></pre>
+
+    <h2 id="snippet10">Turtle: Circles</h2>
+    <pre><code>import turtle
+
+def polygon(t, length, n):
+    angle = 360 / n
+    for _ in range(n):
+        t.forward(length)
+        t.left(angle)
+
+def circle(t, r):
+    n = 360
+    length = 2 * 3.14159 * r / n
+    polygon(t, length, n)
+
+bob = turtle.Turtle()
+radii = [50, 100, 150, 200]
+
+for r in radii:
+    bob.penup()
+    bob.goto(0, -r)
+    bob.pendown()
+    circle(bob, r)
+    bob.penup()
+
+turtle.done()</code></pre>
+
+    <h2 id="snippet11">Turtle: Arcs</h2>
+    <pre><code>import turtle
+
+def polygon(t, length, n):
+    angle = 360 / n
+    for _ in range(n):
+        t.forward(length)
+        t.left(angle)
+
+def arc(t, r, angle):
+    n = 360
+    length = 2 * 3.14159 * r / n
+    sides_to_draw = int(n * (angle / 360))
+    for _ in range(sides_to_draw):
+        t.forward(length)
+        t.left(360 / n)
+
+bob = turtle.Turtle()
+radii_angles = [(50, 90), (100, 180), (150, 45), (200, 270)]
+
+for r, angle in radii_angles:
+    bob.penup()
+    bob.goto(0, -r)
+    bob.pendown()
+    arc(bob, r, angle)
+    bob.penup()
+
+turtle.done()</code></pre>
+</body>
+</html>

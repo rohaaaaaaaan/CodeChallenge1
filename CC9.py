@@ -1,19 +1,19 @@
 import turtle
 
-def draw_circle(turtle, color, size, x, y):
-    turtle.penup()
-    turtle.color(color)
-    turtle.fillcolor(color)
-    turtle.goto(x,y)
-    turtle.begin_fill()
-    turtle.circle(size)
-    turtle.end_fill()
-    turtle.pendown()
+# Function to draw a regular polygon with n sides and a given length
+def polygon(t, length, n):
+    # Calculate the exterior angle of the polygon
+    angle = 360 / n
+    
+    for _ in range(n):  # Draw n sides
+        t.forward(length)  # Move forward by the length of each side
+        t.left(angle)       # Turn left by the exterior angle
 
-tommy = turtle.Turtle()
-tommy.shape("turtle")
-tommy.speed(500)
+# Create a turtle named 'bob'
+bob = turtle.Turtle()
 
-draw_circle(tommy, "green", 50, 25, 0)
-draw_circle(tommy, "blue", 50, 0, 0)
-draw_circle(tommy, "yellow", 50, -25, 0)
+# Call the polygon function with 'bob', a side length of 100, and a polygon with 6 sides (hexagon)
+polygon(bob, 100, 6)  # You can test with different values for 'n'
+
+# Finish the turtle graphics
+turtle.done()
